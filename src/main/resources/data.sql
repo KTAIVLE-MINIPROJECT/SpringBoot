@@ -1,0 +1,10 @@
+INSERT INTO category (id, name) VALUES (0, '총류');
+INSERT INTO category (id, name) VALUES (100, '철학');
+INSERT INTO category (id, name) VALUES (200, '종교');
+INSERT INTO category (id, name) VALUES (300, '사회과학');
+INSERT INTO category (id, name) VALUES (400, '순수과학');
+INSERT INTO category (id, name) VALUES (500, '기술과학');
+INSERT INTO category (id, name) VALUES (600, '예술');
+INSERT INTO category (id, name) VALUES (700, '언어');
+INSERT INTO category (id, name) VALUES (800, '문학');
+INSERT INTO category (id, name) VALUES (900, '역사');
