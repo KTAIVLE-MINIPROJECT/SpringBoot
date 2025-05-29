@@ -2,16 +2,33 @@ package com.aivle1_3.BookApi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.*;
+
+import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@Builder
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String title;
-    private String author;
+    private Long id; // 도서 고유번호
+
+    @CreationTimestamp
+    private LocalDateTime createdAt; // 도서 등록일
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt; // 도서 수정일
+
+    private String title;      // 도서 제목
+    private String author;     // 도서 저자
+    private String publisher;  // 출판사
+    private String content;    // 도서 소개
+    private String coverUrl;   // 표지 이미지 URL
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category; // 외래키 연관 관계
 }
