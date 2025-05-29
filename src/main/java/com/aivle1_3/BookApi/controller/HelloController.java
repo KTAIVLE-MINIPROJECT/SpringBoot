@@ -1,12 +1,16 @@
 package com.aivle1_3.BookApi.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController()
+@RequestMapping("/api/v1")
 public class HelloController {
 
-    @GetMapping("/api/v1/hello")
+    @GetMapping("/hello")
     public String hello() {
         return "Hello";
     }
