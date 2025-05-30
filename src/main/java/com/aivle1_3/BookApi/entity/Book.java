@@ -24,9 +24,17 @@ public class Book {
     @UpdateTimestamp
     private LocalDateTime updatedAt; // 도서 수정일
 
+
+    @Column(nullable = false)
     private String title;      // 도서 제목
+
+    @Column(nullable = false)
     private String author;     // 도서 저자
+
+    @Column(nullable = false)
     private String publisher;  // 출판사
+
+
     private String content;    // 도서 소개
     private String coverUrl;   // 표지 이미지 URL
 
