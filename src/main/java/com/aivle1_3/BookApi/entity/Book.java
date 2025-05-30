@@ -28,7 +28,5 @@ public class Book {
     private String content;    // 도서 소개
     private String coverUrl;   // 표지 이미지 URL
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category; // 외래키 연관 관계
+    private Long categoryId; // 카테고리 외래키
 }
