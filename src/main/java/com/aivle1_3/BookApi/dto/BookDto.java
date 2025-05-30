@@ -1,4 +1,5 @@
 package com.aivle1_3.BookApi.dto;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.*;
 
@@ -10,6 +11,8 @@ public class BookDto {
     private String publisher;
     private String content;
     private String coverUrl;
+
+    @JsonProperty("category_id")
     private Long categoryId;
 }
 

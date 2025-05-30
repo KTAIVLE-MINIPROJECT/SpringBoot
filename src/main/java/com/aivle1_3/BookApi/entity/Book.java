@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.*;
 
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 @Getter @Setter
@@ -28,5 +30,6 @@ public class Book {
     private String content;    // 도서 소개
     private String coverUrl;   // 표지 이미지 URL
 
+    @JsonProperty("category_id")
     private Long categoryId; // 카테고리 외래키
 }
