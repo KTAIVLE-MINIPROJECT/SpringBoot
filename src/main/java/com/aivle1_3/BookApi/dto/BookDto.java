@@ -11,6 +11,7 @@ public class BookDto {
     private String publisher;
     private String content;
     private String coverUrl;
+    private Long userId;
 
     @JsonProperty("category_id")
     private Long categoryId;

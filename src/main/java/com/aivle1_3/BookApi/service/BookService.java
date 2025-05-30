@@ -34,6 +34,7 @@ public class BookService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 category ID 입니다."));
 
         book.setCategoryId(category.getId());
+        book.setUserId(dto.getUserId());
         return bookRepository.save(book);
     }
 
@@ -42,8 +43,14 @@ public class BookService {
     }
 
     public Book update(BookDto dto) {
+
         Book book = bookRepository.findById(dto.getId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 book ID 입니다."));
+
+        // ✅ 사용자 권한 확인
+        if (!book.getUserId().equals(dto.getUserId())) {
+            throw new RuntimeException("수정 권한이 없습니다.");
+        }
 
         if (dto.getTitle() != null) book.setTitle(dto.getTitle());
         if (dto.getAuthor() != null) book.setAuthor(dto.getAuthor());
@@ -60,6 +67,11 @@ public class BookService {
     public Book delete(BookDto dto) {
         Book book = bookRepository.findById(dto.getId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 book ID 입니다."));
+
+        // ✅ 사용자 권한 확인
+        if (!book.getUserId().equals(dto.getUserId())) {
+            throw new RuntimeException("삭제 권한이 없습니다.");
+        }
 
         bookRepository.delete(book);
 

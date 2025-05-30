@@ -40,4 +40,7 @@ public class Book {
 
     @JsonProperty("category_id")
     private Long categoryId; // 카테고리 외래키
+
+    @Column(nullable = false)
+    private Long userId;
 }
