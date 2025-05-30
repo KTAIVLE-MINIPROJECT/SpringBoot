@@ -50,6 +50,9 @@ public class BookService {
         if (dto.getPublisher() != null) book.setPublisher(dto.getPublisher());
         if (dto.getContent() != null) book.setContent(dto.getContent());
         if (dto.getCoverUrl() != null) book.setCoverUrl(dto.getCoverUrl());
+        if (dto.getCategoryId() != null) book.setCategoryId(dto.getCategoryId());
+
+        bookRepository.save(book);
 
         return book;
     }

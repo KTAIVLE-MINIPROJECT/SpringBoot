@@ -28,7 +28,7 @@ public class BookController {
         return bookService.save(dto);
     }
 
-    @GetMapping("/api/v1/books/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Object> getBookById(@PathVariable Long id) {
         Optional<Book> bookOpt = bookService.findById(id);
         if (bookOpt.isPresent()) {
