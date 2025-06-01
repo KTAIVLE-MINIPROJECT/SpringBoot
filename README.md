@@ -51,4 +51,4 @@ cd SpringBoot
 
 ---
 
-😎 created by : 최인규, 
+😎 created by : 최인규, 허유찬
