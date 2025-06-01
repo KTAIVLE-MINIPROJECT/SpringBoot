@@ -24,7 +24,6 @@ public class Book {
     @UpdateTimestamp
     private LocalDateTime updatedAt; // 도서 수정일
 
-
     @Column(nullable = false)
     private String title;      // 도서 제목
 
@@ -34,8 +33,9 @@ public class Book {
     @Column(nullable = false)
     private String publisher;  // 출판사
 
-
+    @Column(length = 500)
     private String content;    // 도서 소개
+
     private String coverUrl;   // 표지 이미지 URL
 
     @JsonProperty("category_id")
