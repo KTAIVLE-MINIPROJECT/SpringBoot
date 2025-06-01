@@ -23,4 +23,26 @@ public class GlobalExceptionHandler {
         response.put("message", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String, Object>> handleRuntimeException(RuntimeException ex) {
+        Map<String, Object> response = new HashMap<>();
+        String msg = ex.getMessage();
+
+        if (msg != null && msg.contains("권한이 없습니다")) {
+            response.put("status", 403);
+            response.put("message", msg);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+        } else if (msg != null && msg.contains("로그인이 필요합니다")) {
+            response.put("status", 401);
+            response.put("message", msg);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        } else {
+            // 기타 RuntimeException은 400 (Bad Request)
+            response.put("status", 400);
+            response.put("message", msg);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+    }
 }
+

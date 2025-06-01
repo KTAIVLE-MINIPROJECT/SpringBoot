@@ -40,4 +40,8 @@ public class Book {
 
     @JsonProperty("category_id")
     private Long categoryId; // 카테고리 외래키
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")  // DB 컬럼명 예시: user_id
+    private User createdBy;         // 이 책을 등록한 회원
 }
