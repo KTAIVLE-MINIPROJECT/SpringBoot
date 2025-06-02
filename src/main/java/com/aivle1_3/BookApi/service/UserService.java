@@ -23,7 +23,7 @@ public class UserService {
         User user = User.builder()
                 .userid(dto.getUserid())
                 .password(dto.getPassword())
-                .nickname(dto.getName())
+                .nickname(dto.getNickname())
                 .build();
 
         User savedUser = userRepository.save(user);

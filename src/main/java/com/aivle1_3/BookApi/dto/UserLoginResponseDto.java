@@ -8,5 +8,5 @@ import lombok.Getter;
 public class UserLoginResponseDto {
     private Long id;
     private String userid;
-    private String name;
+    private String nickname;
 }
