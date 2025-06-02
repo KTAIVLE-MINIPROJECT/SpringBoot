@@ -37,7 +37,7 @@ public class Book {
 
     private String content;    // 도서 소개
 
-    @Column(length = 500)
+    @Column(length = 1000)
     private String coverUrl;   // 표지 이미지 URL
 
     @JsonProperty("category_id")
