@@ -21,7 +21,7 @@ public class BookDto {
     private String content;
     private String coverUrl;
     private Long categoryId;
-    private Long userId;
+    private Long userid;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
