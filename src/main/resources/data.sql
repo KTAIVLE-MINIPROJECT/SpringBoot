@@ -1,5 +1,6 @@
-INSERT INTO users (id, username, password) VALUES (1, 'user1', 'pass1');
-INSERT INTO users (id, username, password) VALUES (2, 'user2', 'pass2');
+ALTER TABLE users ALTER COLUMN id RESTART WITH 3;
+INSERT INTO users (id, username, password, nickname) VALUES (1, 'user1', 'pass1', '1234');
+INSERT INTO users (id, username, password, nickname) VALUES (2, 'user2', 'pass2', '5678');
 
 INSERT INTO category (id, name) VALUES (0, '총류');
 INSERT INTO category (id, name) VALUES (100, '철학');
