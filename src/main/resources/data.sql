@@ -1,3 +1,4 @@
+ALTER TABLE users ALTER COLUMN id RESTART WITH 3;
 INSERT INTO users (id, userid, password, nickname) VALUES (1 ,'user1', 'pass1', '홍길동');
 INSERT INTO users (id, userid, password, nickname) VALUES (2 ,'user2', 'pass2', '임꺽정');
 
