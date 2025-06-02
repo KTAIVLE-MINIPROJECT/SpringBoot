@@ -1,6 +1,9 @@
 package com.aivle1_3.BookApi.service;
 
-import com.aivle1_3.BookApi.entity.Users;
+import com.aivle1_3.BookApi.dto.UserSignupRequestDto;
+import com.aivle1_3.BookApi.dto.UserLoginRequestDto;
+import com.aivle1_3.BookApi.dto.UserLoginResponseDto;
+import com.aivle1_3.BookApi.entity.User;
 import com.aivle1_3.BookApi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,21 +11,36 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
 
-    public Users register(Users users) {
-        if (userRepository.findByUsername(users.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("이미 존재하는 사용자입니다.");
+    // 회원가입
+    public UserLoginResponseDto signup(UserSignupRequestDto dto) {
+        if (userRepository.findByUserid(dto.getUserid()).isPresent()) {
+            throw new RuntimeException("이미 존재하는 아이디입니다.");
         }
-        return userRepository.save(users);
+
+        User user = User.builder()
+                .userid(dto.getUserid())
+                .password(dto.getPassword())
+                .nickname(dto.getNickname())
+                .build();
+
+        User savedUser = userRepository.save(user);
+
+        return new UserLoginResponseDto(savedUser.getId(), savedUser.getUserid(), savedUser.getNickname());
     }
 
-    public Users login(String username, String password) {
-        Users users = userRepository.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
-        if (!users.getPassword().equals(password)) {
-            throw new IllegalArgumentException("비밀번호가 틀렸습니다.");
+    // 로그인
+    public UserLoginResponseDto login(UserLoginRequestDto dto) {
+        User user = userRepository.findByUserid(dto.getUserid())
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 아이디입니다."));
+
+        if (!dto.getPassword().equals(user.getPassword())) {
+            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
-        return users;
+
+        return new UserLoginResponseDto(user.getId(), user.getUserid(), user.getNickname());
     }
 }
+
